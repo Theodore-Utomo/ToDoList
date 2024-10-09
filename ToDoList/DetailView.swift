@@ -8,11 +8,28 @@
 import SwiftUI
 
 struct DetailView: View {
+    var passedValue: String // Don't initialize it - it will be passed from parent view
+    @Environment(\.dismiss) private var dismiss //Dismisses a screen
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Spacer()
+            Image(systemName: "swift")
+                .resizable()
+                .scaledToFit()
+                .foregroundStyle(.orange)
+            
+            Text("You Are a Swifty Legend!\nAnd you passed over the value: \(passedValue)")
+                .font(.largeTitle)
+                .multilineTextAlignment(.center)
+            Spacer()
+            Button("Get Back!") {
+                dismiss() //Dismisses a screen
+            }
+        }
+        .padding()
     }
 }
 
 #Preview {
-    DetailView()
+    DetailView(passedValue: "")
 }
